@@ -25,28 +25,27 @@ var paid = parseFloat(prompt('Amount due', 0));
 var change = (paid - due).toFixed(2);
 
 // initialized variables for calculates £
-var fiftyNote;
-var twentyNote; 
-var tenNote;
-var fiveNote;
-var twoNote;
-var oneNote;
+var fiftyNote,
+    twentyNote, 
+    tenNote,
+    fiveNote,
+    twoNote,
+    oneNote;
 
 // initialized variables for calculates penny
 
-var fiftyCoin;
-var twentyCoin;
-var tenCoin;
-var fiveCoin;
-var twoCoin;
-var oneCoin;
+var fiftyCoin,
+    twentyCoin,
+    tenCoin,
+    fiveCoin,
+    twoCoin,
+    oneCoin;
 
 var fiftyPound = Math.floor(change / 50);
 
 
 var period = change - (fiftyPound * 50);
 var coins = Math.floor( ( ( (change % 10).toFixed(2) ) * 100 ) % 100 );
-var twentyCoins = Math.floor(coins / 20); 
 
 console.log("Due: £" + due + "/ " + "Paid: " + "£" + paid + "/ " + "Change: " + "£" + change);
 console.log("Change Breakdown:");
@@ -59,23 +58,23 @@ fiftyNote   =   (change > 50) ?
 
 twentyNote  =   (period <= 50 && period >= 20)  ?
                 console.log("£20 notes: " +  Math.floor(period / 20) )
-                + (period = period - 20):
+                + (period -= 20):
                 false;
 
 tenNote     =   (period < 20 && period >= 10) ?
                 console.log("£10 notes: " +  Math.floor(period / 10))
-                + (period = period -  10 ):
+                + (period -= 10 ):
                 false;
 
 
 fiveNote    =   (period < 10 && period >= 5) ?
                 console.log("£5 notes: " +  Math.floor(period / 5))
-                + (period =  period - 5 ):
+                + (period -= 5 ):
                 false;   
 
 twoNote     =   (period < 5 && period >= 2) ?
                 console.log("£2 coins: " +  Math.floor(period / 2))
-                + (period =  period - 2):
+                + (period -= 2):
                 false;   
 
 oneNote     =   (period <  2 && period >=  1) ?
@@ -87,27 +86,27 @@ oneNote     =   (period <  2 && period >=  1) ?
 
 fiftyCoin   =   (coins > 50) ?
                 console.log("50p coins: " +  Math.floor(coins / 50) )
-                + (coins = coins - 50):
+                + (coins -= 50):
                 false;
 
 twentyCoin  =   (coins <= 50 && coins >= 20 ) ?
                 console.log("20p coins: " +  Math.floor(coins / 20) )
-                + (coins = coins - ((Math.floor(coins / 20)) * 20) ):
+                + (coins -= (Math.floor(coins / 20)) * 20):
                 false;
 
 tenCoin     =   (coins < 20 && coins >= 10 ) ?
                 console.log("10p coins: " +  Math.floor(coins / 10) )
-                + (coins = coins - 10):
+                + (coins -= 10):
                 false;
 
 fiveCoin    =   (coins < 10 && coins >= 5 ) ?
                 console.log("5p coins: " +  Math.floor(coins / 5) )
-                + (coins = coins - 5):
+                + (coins -= 5):
                 false;
 
 twoCoin     =   (coins < 5 && coins >= 2 ) ?
                 console.log("2p coins: " +  Math.floor(coins / 2) )
-                + (coins = coins - 2):
+                + (coins -= 2):
                 false;
 
 oneCoin     =   (coins <  2 && coins >= 1 ) ?
