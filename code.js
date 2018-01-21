@@ -43,8 +43,10 @@ var oneCoin;
 
 var fiftyPound = Math.floor(change / 50);
 
+
 var period = change - (fiftyPound * 50);
 var coins = Math.floor( ( ( (change % 10).toFixed(2) ) * 100 ) % 100 );
+var twentyCoins = Math.floor(coins / 20); 
 
 console.log("Due: £" + due + "/ " + "Paid: " + "£" + paid + "/ " + "Change: " + "£" + change);
 console.log("Change Breakdown:");
@@ -82,6 +84,7 @@ oneNote     =   (period <  2 && period >=  1) ?
 
 // calculate coins
 
+
 fiftyCoin   =   (coins > 50) ?
                 console.log("50p coins: " +  Math.floor(coins / 50) )
                 + (coins = coins - 50):
@@ -89,7 +92,7 @@ fiftyCoin   =   (coins > 50) ?
 
 twentyCoin  =   (coins <= 50 && coins >= 20 ) ?
                 console.log("20p coins: " +  Math.floor(coins / 20) )
-                + (coins = coins - 20):
+                + (coins = coins - ((Math.floor(coins / 20)) * 20) ):
                 false;
 
 tenCoin     =   (coins < 20 && coins >= 10 ) ?
@@ -107,7 +110,7 @@ twoCoin     =   (coins < 5 && coins >= 2 ) ?
                 + (coins = coins - 2):
                 false;
 
-oneCoin     =   (coins == 1 ) ?
+oneCoin     =   (coins <  2 && coins >= 1 ) ?
                 console.log("1p coins: " +  parseInt(1) ):
                 false;
  
