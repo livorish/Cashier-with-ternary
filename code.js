@@ -33,7 +33,6 @@ var fiftyNote,
     oneNote;
 
 // initialized variables for calculates penny
-
 var fiftyCoin,
     twentyCoin,
     tenCoin,
@@ -41,72 +40,66 @@ var fiftyCoin,
     twoCoin,
     oneCoin;
 
-var fiftyPound = Math.floor(change / 50);
-
-
-var period = change - (fiftyPound * 50);
-var coins = Math.floor( ( ( (change % 10).toFixed(2) ) * 100 ) % 100 );
+var coins = ( ( ( (change % 10).toFixed(2) ) * 100 ) % 100 ).toFixed(2);
 
 console.log("Due: £" + due + "/ " + "Paid: " + "£" + paid + "/ " + "Change: " + "£" + change);
 console.log("Change Breakdown:");
 
 // calculate pounds
-
-fiftyNote   =   (change > 50) ?
-                console.log("£50 notes: " +  fiftyPound ):
+fiftyNote   =   (change >= 50) ?
+                console.log("£50 notes: " + Math.floor(change / 50))
+                + (change = (change % 50).toFixed(2)):
                 false;
 
-twentyNote  =   (period <= 50 && period >= 20)  ?
-                console.log("£20 notes: " +  Math.floor(period / 20) )
-                + (period -= 20):
+twentyNote  =   (change < 50 && change >= 20)  ?
+                console.log("£20 notes: " + Math.floor(change / 20))
+                + (change = (change % 20).toFixed(2)):
                 false;
 
-tenNote     =   (period < 20 && period >= 10) ?
-                console.log("£10 notes: " +  Math.floor(period / 10))
-                + (period -= 10 ):
+tenNote     =   (change < 20 && change >= 10) ?
+                console.log("£10 notes: " + Math.floor(change / 10))
+                + (change = (change % 10).toFixed(2)):
                 false;
 
 
-fiveNote    =   (period < 10 && period >= 5) ?
-                console.log("£5 notes: " +  Math.floor(period / 5))
-                + (period -= 5 ):
+fiveNote    =   (change < 10 && change >= 5) ?
+                console.log("£5 notes: " + Math.floor(change / 5))
+                + (change = (change % 5).toFixed(2)):
                 false;   
 
-twoNote     =   (period < 5 && period >= 2) ?
-                console.log("£2 coins: " +  Math.floor(period / 2))
-                + (period -= 2):
+twoNote     =   (change < 5 && change >= 2) ?
+                console.log("£2 notes: " + Math.floor(change / 2))
+                + (change = (change % 2).toFixed(2)):
                 false;   
 
-oneNote     =   (period <  2 && period >=  1) ?
+oneNote     =   (change <  2 && change >= 1) ?
                 console.log("£1 coins: " + parseInt(1)):
                 false;
 
 // calculate coins
-
-
 fiftyCoin   =   (coins > 50) ?
                 console.log("50p coins: " +  Math.floor(coins / 50) )
-                + (coins -= 50):
+                + (coins %= 50):
                 false;
 
 twentyCoin  =   (coins <= 50 && coins >= 20 ) ?
                 console.log("20p coins: " +  Math.floor(coins / 20) )
-                + (coins -= (Math.floor(coins / 20)) * 20):
+                + (coins %= 20):
                 false;
 
 tenCoin     =   (coins < 20 && coins >= 10 ) ?
                 console.log("10p coins: " +  Math.floor(coins / 10) )
-                + (coins -= 10):
+                + (coins %= 10):
                 false;
 
 fiveCoin    =   (coins < 10 && coins >= 5 ) ?
                 console.log("5p coins: " +  Math.floor(coins / 5) )
-                + (coins -= 5):
+                + (coins %= 5):
                 false;
 
 twoCoin     =   (coins < 5 && coins >= 2 ) ?
                 console.log("2p coins: " +  Math.floor(coins / 2) )
-                + (coins -= 2):
+                + (coins %= 2):
                 false;
 
 oneCoin     =   (coins <  2 && coins >= 1 ) ?
